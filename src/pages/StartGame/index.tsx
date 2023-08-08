@@ -89,7 +89,7 @@ const StartGame = () => {
         <PrimaryButton text="StartGame" href="/in-game" />
       </Box>
       <Box>
-        <FormControl sx={{ mb: 2, minWidth: "100%" }}>
+        <FormControl sx={{ mb: 2, minWidth: "30vh", width: "100%" }}>
           <Typography
             fontSize={18}
             fontWeight={600}
@@ -105,13 +105,17 @@ const StartGame = () => {
           >
             {fetchedCategories &&
               fetchedCategories.map((category) => {
-                return <MenuItem value={category.id}>{category.name}</MenuItem>;
+                return (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                );
               })}
           </Select>
         </FormControl>
       </Box>
       <Box>
-        <FormControl sx={{ mb: 2, minWidth: "100%" }}>
+        <FormControl sx={{ mb: 2, minWidth: "30vh", width: "100%" }}>
           <Typography
             fontSize={18}
             fontWeight={600}

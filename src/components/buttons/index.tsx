@@ -9,6 +9,7 @@ const classes = {
 
 const StyledButton = styled(Button)(({ theme }) => ({
   padding: "20px",
+  minWidth: "30vh",
   width: "25vw",
   height: "6vh",
   borderRadius: theme.spacing(2), // I use a theme because in large apps it's easier to control all colors and spacing with them provided by MUI
@@ -32,8 +33,4 @@ export const PrimaryButton = ({ text, href = "" }: primariButtonProps) => {
       </Link>
     </StyledButton>
   );
-};
-
-export const SecondaryButton = (text?: string) => {
-  return <StyledButton>PrimaryButton</StyledButton>;
 };

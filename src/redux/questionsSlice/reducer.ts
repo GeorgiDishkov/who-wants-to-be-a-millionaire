@@ -1,5 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { questionProps, questionsType } from "./types";
+import { questionProps, questionsType, singleQuestion } from "./types";
 import { fetchQuestions } from "../../api/questions";
 
 const initialState: questionsType = {
@@ -8,6 +8,8 @@ const initialState: questionsType = {
   error: "",
   selectedCategory: null,
   selectedDifficulty: null,
+  answeredQuestions: [],
+  winOrLose: null,
 };
 
 export const asyncQuestions = createAsyncThunk(
@@ -37,6 +39,15 @@ export const questionsRequest = createSlice({
     setDifficulty: (state, action: PayloadAction<string>) => {
       state.selectedDifficulty = action.payload;
     },
+    setAnsweredQuestions: (state, action: PayloadAction<singleQuestion>) => {
+      state.answeredQuestions.push(action.payload);
+    },
+    clearAnsweredQuestions: (state) => {
+      state.answeredQuestions = [];
+    },
+    setWinOrLose: (state, action: PayloadAction<boolean>) => {
+      state.winOrLose = action.payload;
+    },
   },
   extraReducers: {
     [asyncQuestions.pending.type]: (state) => {
@@ -56,5 +67,11 @@ export const questionsRequest = createSlice({
   },
 });
 
-export const { setCategory, setDifficulty } = questionsRequest.actions;
+export const {
+  setCategory,
+  setDifficulty,
+  setAnsweredQuestions,
+  clearAnsweredQuestions,
+  setWinOrLose,
+} = questionsRequest.actions;
 export default questionsRequest;

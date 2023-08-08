@@ -1,0 +1,17 @@
+export const prizes = [
+  { point: 15, prize: "$1,000,000" },
+  { point: 14, prize: "$500,000" },
+  { point: 13, prize: "$250,000" },
+  { point: 12, prize: "$125,000" },
+  { point: 11, prize: "$64,000" },
+  { point: 10, prize: "$32,000" },
+  { point: 9, prize: "$16,000" },
+  { point: 8, prize: "$8,000" },
+  { point: 7, prize: "$4,000" },
+  { point: 6, prize: "$2,000" },
+  { point: 5, prize: "$1,000" },
+  { point: 4, prize: "$500" },
+  { point: 3, prize: "$300" },
+  { point: 2, prize: "$200" },
+  { point: 1, prize: "$100" },
+];

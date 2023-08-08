@@ -13,6 +13,8 @@ export interface questionsType {
   error: string | null;
   selectedCategory: number | null;
   selectedDifficulty: string | null;
+  answeredQuestions: singleQuestion[];
+  winOrLose: boolean | null;
 }
 
 export interface questionProps {
