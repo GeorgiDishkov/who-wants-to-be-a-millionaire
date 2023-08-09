@@ -47,7 +47,7 @@ const InGame = () => {
   const [rightButton, setRightButton] = useState<string | null>(null);
   const [wrongButton, setWrongButton] = useState<string | null>(null);
   const [isGameEnd, setIsGameEnd] = useState<boolean>(false);
-  const [time, setTime] = useState<number>(500);
+  const [time, setTime] = useState<number>(60);
   const navigate = useNavigate();
 
   const handleAnswere = (answer: string, button: string) => {
@@ -173,9 +173,8 @@ const InGame = () => {
   useEffect(() => {
     (async () => {
       await dispatch(asyncQuestions({ count: 15, difficulty, category }));
-      dispatch(clearAnsweredQuestions());
+      await dispatch(clearAnsweredQuestions());
     })();
-    setTime(500);
   }, []);
 
   useEffect(() => {
@@ -192,9 +191,6 @@ const InGame = () => {
     }
   }, [drawedQuestion, questions]);
 
-  console.log("callAFriendJoker ==>", callAFriendJoker);
-  console.log("isGameEnd ==>", isGameEnd);
-
   return (
     <>
       <StyledJokersBox>
@@ -205,16 +201,16 @@ const InGame = () => {
               onClick={() => fiftyFiftyJoker()}
               className={isFiftyFiftyUsed ? classes.strikeOut : ""}
             >
-              <img src="./joker50x50.png" width={"100px"} height={"70px"} />
+              <img src="./50x50.png" width={"100px"} height={"70px"} />
             </Button>
           </Box>
           <Box>
             <Button
-              // disabled={isCallAFriendUsed}
+              disabled={isCallAFriendUsed}
               onClick={() => callAFriendJokerFn()}
               className={isCallAFriendUsed ? classes.strikeOut : ""}
             >
-              <img src="./joker50x50.png" width={"100px"} height={"70px"} />
+              <img src="./phone.png" width={"100px"} height={"70px"} />
             </Button>
           </Box>
           <Box>
@@ -223,10 +219,13 @@ const InGame = () => {
               onClick={() => helpFromAudienceFn()}
               className={isHelpFromAudience ? classes.strikeOut : ""}
             >
-              <img src="./joker50x50.png" width={"100px"} height={"70px"} />
+              <img src="./people.png" width={"100px"} height={"70px"} />
             </Button>
           </Box>
-          <Box>
+          <Box style={{ display: "flex", alignItems: "center" }}>
+            <Typography fontSize={20} fontWeight={300} color="#fff">
+              Time:{" "}
+            </Typography>
             <Typography fontSize={40} fontWeight={600} color="#c8cd00">
               {time}
             </Typography>

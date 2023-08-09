@@ -25,7 +25,7 @@ export const StyledJokersBox = styled(Box)(({}) => ({
     alignItems: "center",
   },
   [`& .${classes.strikeOut}`]: {
-    backgroundColor: "red",
+    opacity: 0.5,
     height: "1px",
     zIndex: "999",
   },
@@ -84,6 +84,6 @@ export const StyledBox = styled(Box)(({ theme }) => ({
     backgroundColor: "#00950b !important",
   },
   [`& .${classes.joker}`]: {
-    border: "2px solid green",
+    border: "10px solid green",
   },
 }));
